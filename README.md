@@ -3,6 +3,8 @@ nagiostv-livestatus
 
 NagiosTV MK Livestatus Edition
 
+![Display](http://chriscarey.com/projects/nagiostv/images/nagiostv-livestatus-1.png)
+
 Featuring:
  EmberJS
  Animate.css
