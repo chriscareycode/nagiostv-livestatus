@@ -40,7 +40,7 @@
     };
     // Dynamically load Templates
     App.loadHandlebar('templates/application.hbs', 'application');
-    App.loadHandlebar('templates/services.hbs', 'services');
+    //App.loadHandlebar('templates/services.hbs', 'services');
     //App.loadHandlebar('templates/service_problem.hbs', 'service_problem');
     
     // Dynamically load Components
