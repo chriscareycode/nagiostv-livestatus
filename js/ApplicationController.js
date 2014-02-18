@@ -135,9 +135,9 @@ App.ApplicationController = Ember.ArrayController.extend({
     $.ajax({      
       type: 'GET',
       //url: "/wsgi/live.py",
-      //url: "php-api/live.php?command="+query,
+      url: "php-api/live.php?command="+query,
       //url: "/nagiostv-wsgi/live.py?command="+query,
-      url: "http://debian7/nagiostv-livestatus/php-api/live.php?command="+query,
+      //url: "http://debian7/nagiostv-livestatus/php-api/live.php?command="+query,
       dataType: "json",
       timeout: 5000,
       success: function(data){
