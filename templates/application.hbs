@@ -1,0 +1,168 @@
+
+
+<div class="titlearea">
+    {{title}} -
+    <span class="fontsize-medium">
+    	{{last_command_check_clean}}
+    	<span id="spinner-lcc" style="color:green;">AJAX</span>
+    </span>
+    
+    <div class="refreshinfo">
+		refreshServices: {{App.refreshServices}}s -
+		refreshHosts: {{App.refreshHosts}}s -
+		refreshLcc: {{App.refreshLcc}}s -
+		refreshStatus: {{App.refreshStatus}}s
+	</div>
+
+	<div {{bind-attr class=":flynn flynnMode"}}></div>
+</div>
+
+<div style="margin:15px 15px 10px 10px">
+	
+	<div style="margin:5px 0 5px 0px">Service Status: <span id="spinner-css" style="color:green;">AJAX</span></div>
+
+	{{#if nagios_services_empty}}
+		{{allok-service message="All Services are OK"}}
+	{{/if}}
+
+	{{#each foo in nagios_services}}
+		{{issue-service
+			next_check=foo.next_check
+			last_check=foo.last_check
+			last_state_change=foo.last_state_change
+			acknowledged=foo.acknowledged
+			animate=foo.animate
+			host_name=foo.host_name
+			host_address=foo.host_address
+			display_name=foo.display_name
+			description=foo.description
+			service_description=foo.description
+			comments_with_info_1=foo.comments_with_info_1
+			comments_with_info_2=foo.comments_with_info_2
+			state_type=foo.state_type
+			service_description=foo.description
+			service_plugin_output_clean=foo.plugin_output
+			service_state=foo.state
+			service_status=foo.state
+			service_status_text=foo.statusClassText
+			service_status_border=foo.statusClassBorder
+			service_state_duration=foo.service_state_duration
+			
+			isCritical=foo.isCritical
+			statusClassText=foo.statusClassText
+		}}
+	{{/each}}
+
+</div>
+
+
+<div style="margin:15px 15px 10px 10px">
+
+	<div style="margin:15px 0 5px 0px">Host Status: <span id="spinner-ss" style="color:green;visibility:hidden;">AJAX</span></div>
+
+{{#unless nagios_host_status}}
+	{{allok-service message="All Hosts are OK"}}
+{{/unless}}
+
+	</div>
+
+</div>
+
+
+<div style="margin:15px 15px 10px 10px">
+
+	<div style="margin:15px 0 5px 0px">System Status: <span id="spinner-ss" style="color:green;visibility:hidden;">AJAX</span></div>
+
+{{#unless nagios_status}}
+	{{allok-service message="No Status"}}
+{{/unless}}
+
+{{#if nagios_status}}
+
+	<div style="color:#ccc">
+		<pre>
+accept_passive_host_checks: {{nagios_status.accept_passive_host_checks}}
+accept_passive_service_checks: {{nagios_status.accept_passive_service_checks}}
+cached_log_messages: {{nagios_status.cached_log_messages}}
+check_external_commands: {{nagios_status.check_external_commands}}
+check_host_freshness: {{nagios_status.check_host_freshness}}
+check_service_freshness: {{nagios_status.check_service_freshness}}
+connections,connections_rate: {{nagios_status.connections_rate}}
+enable_event_handlers: {{nagios_status.enable_event_handlers}}
+enable_flap_detection: {{nagios_status.enable_flap_detection}}
+enable_notifications: {{nagios_status.enable_notifications}}
+execute_host_checks: {{nagios_status.execute_host_checks}}
+execute_service_checks: {{nagios_status.execute_service_checks}}
+external_command_buffer_max: {{nagios_status.execute_service_checks}}
+external_command_buffer_slots: {{nagios_status.external_command_buffer_slots}}
+external_command_buffer_usage: {{nagios_status.external_command_buffer_usage}}
+external_commands: {{nagios_status.external_commands}}
+external_commands_rate: {{nagios_status.external_commands_rate}}
+forks: {{nagios_status.forks}}
+forks_rate: {{nagios_status.forks_rate}}
+host_checks: {{nagios_status.host_checks}}
+host_checks_rate: {{nagios_status.host_checks_rate}}
+interval_length: {{nagios_status.interval_length}}
+last_command_check: {{nagios_status.last_command_check}}
+last_log_rotation: {{nagios_status.last_log_rotation}}
+livestatus_version: {{nagios_status.livestatus_version}}
+log_messages: {{nagios_status.log_messages}}
+log_messages_rate: {{nagios_status.log_messages_rate}}
+nagios_pid: {{nagios_status.nagios_pid}}
+neb_callbacks: {{nagios_status.neb_callbacks}}
+neb_callbacks_rate: {{nagios_status.neb_callbacks_rate}}
+obsess_over_hosts: {{nagios_status.obsess_over_hosts}}
+obsess_over_services: {{nagios_status.obsess_over_services}}
+process_performance_data: {{nagios_status.process_performance_data}}
+program_start: {{nagios_status.program_start}}
+program_version: {{program_version}}
+requests: {{nagios_status.requests}}
+requests_rate: {{nagios_status.requests_rate}}
+service_checks: {{nagios_status.service_checks}}
+service_checks_rate: {{nagios_status.service_checks_rate}}
+		</pre>
+	</div>
+
+{{/if}}
+
+</div>
+
+
+<div style="margin:15px 15px 10px 10px;">
+	<h3>More Debug Area</h3>
+
+
+	{{view Ember.TextArea valueBinding="mk_query" cols="110" rows="4"}}
+	
+	<div>
+	<button {{action 'doManualQueryLS'}}>Send</button>
+	</div>
+	
+	<div style="width:300px;height:80px;">
+		{{view Ember.TextArea valueBinding="mk_result_str" cols="110" rows="4"}}
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,440 @@
+
+body {
+	font-family: sans-serif;
+	background: #000;
+	color:#fff;
+	font-size:1em;
+	line-height: normal; 
+}
+h1 {
+	margin:2px 0 6px 0;
+	font-size:1.1em;
+	font-weight:normal;
+}
+pre {
+	margin:0px 0px 0px 0px;
+	font-family:sans-serif;
+	font-size:0.8em;
+}
+
+
+.titlearea {
+	margin:5px 0 5px 10px;
+	font-size:1.1em;
+}
+
+
+.allok {
+	color:lime;
+	padding:5px;
+	background-color:#333333;
+	border:2px solid lime;
+	min-height:40px;
+}
+
+.refreshinfo {
+	font-size:0.8em;
+}
+.neonbox {
+	border-radius:4px;
+}
+.service-item {
+	position:relative;
+	border-radius:6px;
+	margin:0px 0px 5px 0px;
+	font-size:0.8em;
+	background-color:#333333;
+	min-height:52px; /* for the pie chart */
+	overflow:hidden;
+	
+}
+
+.date-details {
+	height:0;
+	
+}
+.service-item:hover .date-details {
+	height:auto;
+}
+
+.service-item-details {
+	margin:5px 100px 5px 5px;
+	font-size:1em;
+	position:relative;
+}
+
+.isSoft {
+	opacity:0.8;
+}
+.service-item-time-ago {
+	position:absolute;
+	top:5px;
+	right:3px;
+	bottom:3px;
+	border-radius:5px;
+	border:0px;
+	padding:0px 10px 0 10px;
+	text-align:center;
+}
+
+
+a {
+	color:lightyellow;
+	text-decoration: none;
+}
+a:hover {
+	color:lightblue;
+	text-decoration: underline;
+}
+
+
+.outer{
+    width:100%;
+
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+
+    /* Safari and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+.inner{
+    width:300px;
+    
+}
+.inner div{
+    
+    text-align:center;
+}
+
+
+
+/* new bootstrap */
+
+.displayNone {
+	display:none;
+}
+.environment {
+
+	/*font-weight:bold;*/
+	text-align:center;
+	text-align:left;
+	/* position:relative;
+	top:-8px;*/
+	margin-top:12px;
+	margin-bottom:6px;
+	padding-bottom:4px;
+	margin-left:5px;
+	border-bottom:1px solid #333;
+}
+
+.versionMismatch{
+
+	margin-left:5px;
+	margin-bottom:0px;
+   
+}
+
+.remoteTimeDiv {
+	margin-left:5px;
+	margin-bottom:0px;
+   
+}
+.localTimeDiv {
+	margin-left:5px;
+	margin-bottom:0px;
+	
+}
+.diffTimeDiv {
+	margin-left:5px;
+	margin-bottom:9px;
+	
+}
+
+.numbers {
+	
+	text-align:center;
+}
+
+.green {
+	color:lime;
+}
+
+/* column layout */
+#leftcol {
+	height: 100%;
+	width:50%;
+	float: left;
+	clear:left;
+}
+#rightcol {
+	height: 100%;
+	width:50%;
+	float: right;
+}
+
+.padme {
+	padding-left:15px;
+	padding-right:15px;
+}
+.wait {
+	text-align:center;
+	/* opacity:0.75;*/
+	
+	
+}
+
+.ago {
+	float:right;
+	height:40px;
+	width:50px;
+	overflow:hidden;
+	text-align:center;
+   
+	font-weight:bold;
+	border:2px solid #555;
+	border-radius:10px;
+	margin-right:0px;
+	padding-top:10px;
+	opacity:1;
+
+}
+
+#barAreaCurrent {
+	position:relative;
+	top:-10px;
+	/* opacity:0.55;*/
+}
+
+/* general style */
+div.section {
+	font-size:1.3em;
+	margin-left:4px;
+	border-bottom:1px solid #333;
+}
+
+.title {
+	font-size:1.2em;
+	font-weight:bold;
+	color:#aaa;
+	padding-left:15px;
+	padding-top:5px;
+	padding-bottom:10px;
+}
+div.graybg {
+	background: #222;
+}
+div.history {
+	/* opacity:0.5;*/
+}
+
+
+/* alerts */
+div.nagalert {
+	border-radius:5px;
+	-moz-border-radius: 5px;
+	padding:5px 5px 5px 5px;
+	
+	margin: 0px 0px 5px 0px;
+	color:#fff;
+	text-align:left;
+}
+
+
+.allgood {
+
+}
+.warning {
+
+	border:1px solid yellow;
+}
+.critical {
+
+	/* border:1px solid #FF7256; */
+}
+.notification {
+
+}
+.acked {
+	font-weight:bold;
+	
+	
+}
+.acked strong {
+	color:lime;
+}
+
+span.alertname1 a {
+	/* color:orange; */
+	color:white;
+}
+span.alertname2 a {
+	/* color:violet; */
+	color:white;
+}
+span.datetime {
+	color:#fff;
+}
+
+/* state colors */
+.borderstate2 {
+	border:1px solid #FF7256;
+}
+.borderstate1 {
+	border:1px solid yellow;
+}
+.borderstate0 {
+	border:1px solid lime;
+}
+.borderstate {
+	border:1px solid lime;
+}
+
+/* state colors */
+.state2 {
+	color:#FF7256;
+}
+.state1 {
+	color:yellow;
+}
+.state0 {
+	color:lime;
+}
+
+
+
+
+.largetimespan {
+	
+}
+.quiet {
+	color:lime;
+
+	text-align:left;
+	opacity:0.7;
+}
+.quiet span {
+
+	font-weight:bold;
+}
+
+
+
+div#statistics {
+	position:fixed;
+	bottom:0px;
+	width:97%;
+	text-align:right;
+	color:#888;
+	padding:3px 0 3px 0;
+	margin-right:30px;
+
+	background-color:black;
+	z-index:1;
+}
+
+#lastupdate {
+	color:#eee;
+	font-weight:bold;
+}
+
+.progress {
+	background-color: #222;
+	background-image:none;
+}
+.progress .bggray {
+	background-image:none;
+	background-color:#555;
+}
+.progress .bggreen {
+	background-image:none;
+	background-color:lime;
+}
+.progress .bgyellow {
+	background-image:none;
+	background-color:yellow;
+}
+.progress .bgred {
+	background-image:none;
+	background-color:brown;
+}
+
+	 
+
+
+
+.service-warning-border {
+	border:2px solid yellow;
+}
+
+.service-critical-border {
+	border:2px solid #FF7256;
+}
+
+.service-unknown-border {
+	border:2px solid orange;
+}
+
+.service-warning-border {
+	border:2px solid yellow;
+}
+
+.service-warning-text {
+	color:yellow;
+}
+
+.service-unknown-text {
+	color:orange;
+}
+
+.service-critical-text {
+	color:#FF7256;
+}
+
+/* flynn begin */
+.flynn {
+	background-image:url('images/flynn.png');
+	height:64px;
+	width:48px;
+	position:absolute;
+	top:10px;
+	right:30px;
+}
+
+.flynn0 {background-position:0px 0px}
+.flynn1 {background-position:0px 0px}
+.flynn2 {background-position:0px -64px}
+.flynn3 {background-position:0px -128px;}
+.flynn4 {background-position:0px -192px;}
+.flynn5 {background-position:0px -256px;}
+.flynn6 {background-position:0px -320px;}
+.flynn7 {background-position:0px -384px;}
+.flynn8 {background-position:0px -448px;}
+.flynn9 {background-position:0px -512px;}
+.flynn10 {background-position:0px -576px;} /* this one is an exception to the 64 rule */
+.flynn11 {background-position:0px -640px}
+.flynn12 {background-position:0px -704px}
+.flynn13 {background-position:0px -768px;}
+.flynn14 {background-position:0px -832px;}
+.flynn15 {background-position:0px -896px;}
+.flynn16 {background-position:0px -960px;}
+.flynn17 {background-position:0px -1024px;}
+.flynn18 {background-position:0px -1088px;}
+.flynn19 {background-position:0px -1152px;}
+.flynn20 {background-position:0px -1216px;}
+.flynn20 {background-position:0px -1280px;}
+.flynn21 {background-position:0px -1344px;}
+.flynn22 {background-position:0px -1408px;}
+.flynn23 {background-position:0px -1472px;}
+.flynn24 {background-position:0px -1536px;}
+.flynn25 {background-position:0px -1600px;}
+.flynn26 {background-position:0px -1664px;}
+/* flynn end */

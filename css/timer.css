@@ -1,0 +1,116 @@
+.timer {
+	height:40px;
+	width:40px;
+    margin:auto;
+	position:absolute;
+	right:98px;
+}
+
+.timer-lime {
+	height:40px;
+	width:40px;
+    margin:auto;
+	position:absolute;
+	right:5px;
+}
+
+.timer-warning {
+	height:40px;
+	width:40px;
+    margin:auto;
+	position:absolute;
+	right:5px;
+	bottom:5px;
+}
+.timer-critical {
+	height:40px;
+	width:40px;
+    margin:auto;
+	position:absolute;
+	right:5px;
+	bottom:5px;
+}
+
+.timersmall {
+	height:20px;
+	width:20px;
+    margin:auto;
+	position:absolute;
+	right:98px;
+	
+}
+
+.circle {
+	border-radius:50%;
+	bottom:1px;
+	left:1px;
+	position:absolute;
+	right:1px;
+	top:1px;
+	
+}
+
+/* z-index */
+.color-left {z-index:2;}
+.color-right {z-index:3;}
+.cover {z-index:4;}
+
+/* backgrounds */
+.cover {
+	background:-webkit-linear-gradient(left, transparent 0, transparent 50%, #333 50%, #333 100%);
+}
+.color {
+	background:-webkit-linear-gradient(left, transparent 0, transparent 50%, #FF7256 50%, #FF7256 100%);
+}
+.color-lime {
+	background:-webkit-linear-gradient(left, transparent 0, transparent 50%, lime 50%, lime 100%);
+}
+.color-warning {
+	background:-webkit-linear-gradient(left, transparent 0, transparent 50%, yellow 50%, yellow 100%);
+}
+.color-critical {
+	background:-webkit-linear-gradient(left, transparent 0, transparent 50%, #FF7256 50%, #FF7256 100%);
+}
+
+.cover {
+	bottom:0;
+	left:0;
+	right:0;
+	top:0;
+	visibility:hidden;
+}
+
+.color-left {-webkit-transform:rotate(180deg);}
+
+.cover-15s {
+	-webkit-animation-duration: 15s;
+}
+.cover-30s {
+	-webkit-animation-duration: 30s;
+}
+.cover-60s {
+	-webkit-animation-duration: 60s;
+}
+
+.cover, .color-left {
+	
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+.cover {-webkit-animation-name: firstspin;}
+.color-left {-webkit-animation-name: secondspin;}
+
+@-webkit-keyframes firstspin {
+ 0% {visibility:visible;-webkit-transform:rotate(0);}
+ 50% {visibility:visible;-webkit-transform:rotate(180deg);}
+ 50% {visibility:hidden;-webkit-transform:rotate(180deg);}
+ 100% {visibility:hidden;-webkit-transform:rotate(180deg);}
+}
+
+@-webkit-keyframes secondspin {
+ 0% {visibility:hidden;-webkit-transform:rotate(0);}
+ 50% {visibility:hidden;-webkit-transform:rotate(0);}
+ 50% {visibility:visible;-webkit-transform:rotate(0);}
+ 100% {visibility:visible;-webkit-transform:rotate(180deg);}
+}
