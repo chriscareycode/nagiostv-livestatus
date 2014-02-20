@@ -134,10 +134,9 @@ App.ApplicationController = Ember.ArrayController.extend({
     
     $.ajax({      
       type: 'GET',
-      //url: "/wsgi/live.py",
-      url: "php-api/live.php?command="+query,
-      //url: "/nagiostv-wsgi/live.py?command="+query,
-      //url: "http://debian7/nagiostv-livestatus/php-api/live.php?command="+query,
+      url: "php-api/live.php?command="+query, // php
+      //url: "/nagiostv-wsgi/live.py?command="+query, // python
+      //url: "http://debian7/nagiostv-livestatus/php-api/live.php?command="+query, // debug
       dataType: "json",
       timeout: 5000,
       success: function(data){
@@ -383,10 +382,13 @@ App.ApplicationController = Ember.ArrayController.extend({
       if (match === false) {
         //slideup
         App.info('bye bye. need to look for __ember obj:');
+        App.dir(ns[i]);
                 
         var die_id = ns[i].host_name +'_'+ ns[i].display_name;
         // add underscores since spaces are an id no no
         var die_id2 = die_id.replace(/ /g,"_");
+        die_id2 = die_id2.replace(/\./g,"_");
+        die_id2 = die_id2.replace(/:/g,"_");
         
         App.info('die_id is '+die_id);
         App.info('die_id2 is '+die_id2);

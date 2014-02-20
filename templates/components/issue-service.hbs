@@ -3,23 +3,27 @@
 
 	<div {{bind-attr class="isSoft:isSoft"}}>
 	
-    <div {{bind-attr  class="statusClassBorder :service-item-time-ago :displayNone"}}>
+    <div {{bind-attr  class=":service-item-time-ago"}}>
         {{{diff_clean}}}
     </div>
 
 {{#if isSoft}}
 {{#if isCritical}}
+<!--
     <div class="timer-critical">
 		<div class="cover circle cover-60s"></div>
 		<div class="color-left color-critical circle cover-60s"></div>
 		<div class="color-right color-critical circle"></div>
 	</div>
+	-->
 {{else}}
+<!--
     <div class="timer-warning">
 		<div class="cover circle cover-60s"></div>
 		<div class="color-left color-warning circle cover-60s"></div>
 		<div class="color-right color-warning circle"></div>
 	</div>
+	-->
 {{/if}}
 {{/if}}
 

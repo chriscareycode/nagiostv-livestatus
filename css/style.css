@@ -54,7 +54,7 @@ pre {
 	
 }
 .service-item:hover .date-details {
-	height:auto;
+	/*height:auto;*/
 }
 
 .service-item-details {

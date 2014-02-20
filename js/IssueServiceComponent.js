@@ -21,8 +21,11 @@ App.IssueServiceComponent = Ember.Component.extend({
 		//console.info(this);
 		//console.info(this.get('host_name'));
 		var temp = this.get('host_name')+'_'+this.get('display_name');
-		var temp2 = temp.replace(/ /g,"_");
-		return temp2;
+		temp = temp.replace(/ /g,"_");
+		temp = temp.replace(/\./g,"_");
+		temp = temp.replace(/:/g,"_");
+		//var temp2 = temp.replace(/ /g,"_");
+		return temp;
 	}.property('host_name', 'display_name', 'App.last_command_check'),
 	
 	last_check_clean: function() {
