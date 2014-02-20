@@ -101,50 +101,29 @@ App.ApplicationController = Ember.ArrayController.extend({
     nagios_services_unacked_empty: function() {
     
       var acked = this.get('content').filter(function(elem){
-        //console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
-        return elem.get('acknowledged') === 1;
+        return elem.get('acknowledged') === 0;
       });
-      return (acked.length > 0 ? true : false);
-
+      return (acked.length === 0 ? true : false);
     }.property('content.@each.acknowledged'),
 
     nagios_services_acked_empty: function() {
     
       var acked = this.get('content').filter(function(elem){
-        //console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
-        return elem.get('acknowledged') === 0;
+        return elem.get('acknowledged') === 1;
       });
-      return (acked.length > 0 ? true : false);
-
+      return (acked.length === 0 ? true : false);
     }.property('content.@each.acknowledged'),
   
-    
-    
     nagios_services_filter_unacked: function(){
-    //var that =  this;
-    //var regex = new RegExp(0, 'i');
-    
-    console.info('nagios_services_filter_unacked');
-    
+
     return this.get('content').filter(function(elem){
-      console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
-      
-      //return elem.get('acknowledged').match(regex);
       return elem.get('acknowledged') === 0;
     });
   }.property('content.@each.acknowledged'),
   
     nagios_services_filter_acked: function(){
-            
-    //var that =  this;
-    //var regex = new RegExp(0, 'i');
-    
-    console.info('nagios_services_filter_acked');
-    
+
     return this.get('content').filter(function(elem){
-      console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
-      
-      //return elem.get('acknowledged').match(regex);
       return elem.get('acknowledged') === 1;
     });
   }.property('content.@each.acknowledged'),
