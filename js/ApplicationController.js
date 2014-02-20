@@ -1,7 +1,32 @@
 // Application Controller
 App.ApplicationController = Ember.ArrayController.extend({
 
-  actions:{
+  
+  
+  content:[], // array now, need to make it an object and hold more than one source of data
+  
+  sortProperties:['current_notification_number'],
+  sortAscending: true,
+
+
+  title: 'NagiosTV - EmberJS & MK Livestatus',
+  mk_query: 'GET status\nOutputFormat: json',
+  //mk_query:'GET contacts\nColumns: name alias\nOutputFormat: json',
+  //mk_query: 'GET hosts\nColumns: name address state\nOutputFormat: json',
+  //mk_query:'GET hosts%0AColumns: name address state%0AOutputFormat: json',
+  mk_result: null,
+  mk_result_str: '',
+    
+    nagios_status: [],
+    //nagios_services: [],
+
+    init: function(){
+
+      this._super();
+      this.startIt();
+    },
+
+    actions:{
   
     doManualQueryLS: function(){
     
@@ -29,25 +54,6 @@ App.ApplicationController = Ember.ArrayController.extend({
     
     }
   },
-  
-  content:[], //not being used
-  
-  title: 'NagiosTV - EmberJS & MK Livestatus',
-  mk_query: 'GET status\nOutputFormat: json',
-  //mk_query:'GET contacts\nColumns: name alias\nOutputFormat: json',
-  //mk_query: 'GET hosts\nColumns: name address state\nOutputFormat: json',
-  //mk_query:'GET hosts%0AColumns: name address state%0AOutputFormat: json',
-  mk_result: null,
-  mk_result_str: '',
-    
-    nagios_status: [],
-    nagios_services: [],
-
-    init: function(){
-
-      this._super();
-      this.startIt();
-    },
     
     last_command_check_clean: function() {
     var date = new Date(App.get('last_command_check') * 1000);
@@ -56,7 +62,7 @@ App.ApplicationController = Ember.ArrayController.extend({
     
     flynnMode: function() {
 
-      var count = this.get('nagios_services').length;
+      var count = this.get('content').length;
       console.info('count is '+count);
       if (count > 0 && count <= 26) {
         return "flynn"+count;
@@ -67,11 +73,11 @@ App.ApplicationController = Ember.ArrayController.extend({
       }
       
 
-    }.property('nagios_services.@each'),
+    }.property('content.@each'),
 
     nagios_services_empty: function() {
     
-      var ns = this.get('nagios_services');
+      var ns = this.get('content');
       
       App.info('nagios_services_empty autofiring');
       App.info(ns);
@@ -90,23 +96,43 @@ App.ApplicationController = Ember.ArrayController.extend({
       } else {
         return false;
       }
-    }.property('nagios_services', 'nagios_services.length'),
+    }.property('content', 'content.length'),
+
+    nagios_services_unacked_empty: function() {
+    
+      var acked = this.get('content').filter(function(elem){
+        //console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
+        return elem.get('acknowledged') === 1;
+      });
+      return (acked.length > 0 ? true : false);
+
+    }.property('content.@each.acknowledged'),
+
+    nagios_services_acked_empty: function() {
+    
+      var acked = this.get('content').filter(function(elem){
+        //console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
+        return elem.get('acknowledged') === 0;
+      });
+      return (acked.length > 0 ? true : false);
+
+    }.property('content.@each.acknowledged'),
   
     
-    /*
+    
     nagios_services_filter_unacked: function(){
     //var that =  this;
     //var regex = new RegExp(0, 'i');
     
     console.info('nagios_services_filter_unacked');
     
-    return this.get('nagios_services').filter(function(elem){
+    return this.get('content').filter(function(elem){
       console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
       
       //return elem.get('acknowledged').match(regex);
       return elem.get('acknowledged') === 0;
     });
-  }.property('nagios_services'),
+  }.property('content.@each.acknowledged'),
   
     nagios_services_filter_acked: function(){
             
@@ -115,16 +141,16 @@ App.ApplicationController = Ember.ArrayController.extend({
     
     console.info('nagios_services_filter_acked');
     
-    return this.get('nagios_services').filter(function(elem){
+    return this.get('content').filter(function(elem){
       console.info('filter nagios_services to nagios_services_acked '+elem.get('acknowledged'));
       
       //return elem.get('acknowledged').match(regex);
       return elem.get('acknowledged') === 1;
     });
-  }.property('nagios_services', 'App.last_command_check'),
+  }.property('content.@each.acknowledged'),
 
 
-    */
+    
     
     
     queryLS: function(query, success_callback, fail_callback) {
@@ -281,7 +307,7 @@ App.ApplicationController = Ember.ArrayController.extend({
         return size;
     };
 
-    var ns = this.get('nagios_services');
+    var ns = this.get('content');
     
     // add new items into the array
     for(var i=0;i<food.length;i++){
@@ -402,7 +428,7 @@ App.ApplicationController = Ember.ArrayController.extend({
       }
     }
     
-    App.info('finishing chompIt() nagios_services is');
+    App.info('finishing chompIt() content is');
     App.dir(ns);  
     
   }, // end chompIt
