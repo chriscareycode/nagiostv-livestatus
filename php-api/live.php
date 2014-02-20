@@ -1,5 +1,8 @@
 <?php
 
+// cors
+header('Access-Control-Allow-Origin:*');
+
 $command = $_GET['command'];       
 $command = urldecode($command);        
 //$command = escapeshellcmd($command);   
