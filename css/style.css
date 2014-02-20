@@ -3,7 +3,7 @@ body {
 	font-family: sans-serif;
 	background: #000;
 	color:#fff;
-	font-size:1em;
+	font-size:12px;
 	line-height: normal; 
 }
 h1 {
@@ -405,7 +405,7 @@ div#statistics {
 	height:64px;
 	width:48px;
 	position:absolute;
-	top:10px;
+	top:5px;
 	right:30px;
 }
 

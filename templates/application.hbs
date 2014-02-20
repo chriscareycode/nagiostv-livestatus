@@ -1,13 +1,13 @@
 
 
 <div class="titlearea">
-    {{title}} -
-    <span class="fontsize-medium">
+    {{title}}
+    <div class="fontsize-medium">
     	{{last_command_check_clean}}
     	<span id="spinner-lcc" style="color:green;">AJAX</span>
-    </span>
+    </div>
     
-    <div class="refreshinfo">
+    <div class="refreshinfo displayNone">
 		refreshServices: {{App.refreshServices}}s -
 		refreshHosts: {{App.refreshHosts}}s -
 		refreshLcc: {{App.refreshLcc}}s -
@@ -54,7 +54,7 @@
 	{{/each}}
 
 
-<div style="margin:5px 0 5px 0px">ACKed Services:</div>
+<div style="margin:8px 0 5px 0px">ACKed Services:</div>
 
 	{{#if nagios_services_acked_empty}}
 		{{allok-service message="No ACKed services"}}
