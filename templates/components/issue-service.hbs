@@ -1,8 +1,12 @@
 <div {{bind-attr id="my_custom_id" class="statusClassBorder :service-item isSoft:isSoft :animated :bounceInLeft"}}>
 	
 	<div {{bind-attr class="isSoft:isSoft"}}>
-	
+
+
+
     <div {{bind-attr  class="statusClassBorder :service-item-time-ago"}}>
+    	{{#unless isSoft}}<span class="soft-alarm-text">Soft Alarm</span> -{{/unless}}
+
         {{{diff_clean}}}
     </div>
 

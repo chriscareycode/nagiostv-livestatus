@@ -92,6 +92,12 @@ font-size:1.2em;
 	text-align:center;
 }
 
+.soft-alarm-text {
+
+	color:pink;
+	font-weight:bold;
+}
+
 
 a {
 	color:lightyellow;
