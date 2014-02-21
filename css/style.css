@@ -69,15 +69,11 @@ font-size:1.2em;
 }
 
 .service-item-acked {
-	position:absolute;
-	bottom:3px;
-	right:4px;
-	width:100px;
-	text-align:right;
+	
 }
 
 .service-item-details {
-	margin:5px 100px 5px 5px;
+	margin:5px 5px 5px 5px;
 	font-size:1em;
 	position:relative;
 }

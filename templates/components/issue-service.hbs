@@ -27,18 +27,16 @@
 {{/if}}
 {{/if}}
 
-{{#if acknowledged}}
-		<div class="service-item-acked">
-			<span class="acked">Acked by <strong>{{comments_with_info_1}}</strong><br>
-				"<strong>{{comments_with_info_2}}</strong>"</span>
-		</div>
-{{/if}}
+
 	
 
 	<div class="service-item-details">
 	
-		
-		<div>{{service_description}} on {{host_name}}
+{{#if acknowledged}}
+		<div class="acked">Acked by <strong>{{comments_with_info_1}}</strong>
+				"<strong>{{comments_with_info_2}}</strong>"</div>
+{{/if}}
+		<div><span {{bind-attr class="statusClassText :service-item-state-text"}}>{{service_description}}</span> on {{host_name}}
 {{#if hostNameAndHostAddressDifferent}}
 		 ({{host_address}})
 {{/if}}
