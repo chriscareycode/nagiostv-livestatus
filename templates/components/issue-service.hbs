@@ -27,26 +27,34 @@
 {{/if}}
 {{/if}}
 
+{{#if acknowledged}}
+		<div class="service-item-acked">
+			<span class="acked">Acked by <strong>{{comments_with_info_1}}</strong><br>
+				"<strong>{{comments_with_info_2}}</strong>"</span>
+		</div>
+{{/if}}
+	
+
 	<div class="service-item-details">
 	
-		{{last_state_change_clean}}
-		{{service_description}} on
-		{{host_name}} ({{host_address}}){{host_address_2}}<br>
+		
+		<div>{{service_description}} on {{host_name}}
+{{#if hostNameAndHostAddressDifferent}}
+		 ({{host_address}})
+{{/if}}
+		</div>
 				
-		<span {{bind-attr class="statusClassText"}}>
+		<span {{bind-attr class="statusClassText :service-item-state-text"}}>
 			{{state_type_text}} {{stateText}} - {{service_plugin_output_clean}} for {{{diff_clean}}}
 		</span>
 		
-{{#if acknowledged}}
-		<div>
-			<span class="acked">Acked by <strong>{{comments_with_info_1}}</strong> comments: "<strong>{{comments_with_info_2}}</strong>"</span>
-		</div>
-{{/if}}
+
 
 		<div class="date-details">
-			Next Check: {{next_check_clean}}<br>
-            Last State Change: {{last_state_change_clean}}<br>
-            Last Check: {{last_check_clean}}
+			Last Check: {{last_check_clean}}<br>
+			Next Check: {{next_check_clean}}
+            
+            
     	</div>
 		
 	</div>

@@ -16,6 +16,15 @@ App.IssueServiceComponent = Ember.Component.extend({
 		this.$().addClass('fadeOutLeft');
 	},
 	
+	hostNameAndHostAddressDifferent: function() {
+
+		if (this.get('host_name') !== this.get('host_address')) {
+			return true;
+		} else {
+			return false;
+		}
+	}.property('host_name','host_address'),
+
 	my_custom_id: function() {
 		//console.info('my_custom_id');
 		//console.info(this);

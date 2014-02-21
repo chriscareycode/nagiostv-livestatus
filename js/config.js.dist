@@ -7,7 +7,11 @@
  *
  ******************************************************************************/
  
-var config_servername = "Nagios Home";
-var config_timezone = "America/Los_Angeles";
-var config_icon = "images/favicon.ico";
-var config_version_check = true;
+
+window.App.config = {
+	api_base_url: 'php-api/live.php',
+	//api_base_url: '/nagiostv-wsgi/live.py',
+	//api_base_url: 'http://debian7/nagiostv-livestatus/php-api/live.php',
+	show_flynn: true
+};
+

@@ -62,8 +62,17 @@ App.ApplicationController = Ember.ArrayController.extend({
     
     flynnMode: function() {
 
-      var count = this.get('content').length;
-      console.info('count is '+count);
+      
+
+      var count = this.get('nagios_services_filter_unacked').length;
+
+
+      // insert a occasional change just to keep him frisky
+      // we observe App.last_command_check solely to get this to fire a bit more often
+      count += Math.round(Math.random());
+
+      //console.info('flynn'+count);
+
       if (count > 0 && count <= 26) {
         return "flynn"+count;
       } else if (count > 26) {
@@ -73,7 +82,7 @@ App.ApplicationController = Ember.ArrayController.extend({
       }
       
 
-    }.property('content.@each'),
+    }.property('content.@each', 'App.last_command_check'),
 
     nagios_services_empty: function() {
     
@@ -100,17 +109,19 @@ App.ApplicationController = Ember.ArrayController.extend({
 
     nagios_services_unacked_empty: function() {
     
-      var acked = this.get('content').filter(function(elem){
-        return elem.get('acknowledged') === 0;
-      });
-      return (acked.length === 0 ? true : false);
+      //var unacked = this.get('content').filter(function(elem){
+      //  return elem.get('acknowledged') === 0;
+      //});
+      var unacked = this.get('nagios_services_filter_unacked');
+      return (unacked.length === 0 ? true : false);
     }.property('content.@each.acknowledged'),
 
     nagios_services_acked_empty: function() {
     
-      var acked = this.get('content').filter(function(elem){
-        return elem.get('acknowledged') === 1;
-      });
+      //var acked = this.get('content').filter(function(elem){
+      //  return elem.get('acknowledged') === 1;
+      //});
+      var acked = this.get('nagios_services_filter_acked');
       return (acked.length === 0 ? true : false);
     }.property('content.@each.acknowledged'),
   
@@ -137,11 +148,15 @@ App.ApplicationController = Ember.ArrayController.extend({
       // convert newline to urlencoded
     query = encodeURIComponent(query);
     
+    //console.info('queryLS');
+    //console.info(App.config);
+    //console.info(App.config.api_base_url + '?command='+query);
+
     $.ajax({      
       type: 'GET',
-      url: "php-api/live.php?command="+query, // php
-      //url: "/nagiostv-wsgi/live.py?command="+query, // python
-      //url: "http://debian7/nagiostv-livestatus/php-api/live.php?command="+query, // debug
+      
+      url: App.config.api_base_url + '?command='+query,
+
       dataType: "json",
       timeout: 5000,
       success: function(data){
