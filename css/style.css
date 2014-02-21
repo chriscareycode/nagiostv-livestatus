@@ -83,9 +83,9 @@ font-size:1.2em;
 }
 .service-item-time-ago {
 	position:absolute;
-	top:5px;
+	top:-7px;
 	right:3px;
-	bottom:3px;
+	background-color:#000;
 	border-radius:5px;
 	border:0px;
 	padding:0px 10px 0 10px;

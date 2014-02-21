@@ -1,45 +1,21 @@
 <div {{bind-attr id="my_custom_id" class="statusClassBorder :service-item isSoft:isSoft :animated :bounceInLeft"}}>
 	
-
 	<div {{bind-attr class="isSoft:isSoft"}}>
 	
-    <div {{bind-attr  class=":service-item-time-ago"}}>
+    <div {{bind-attr  class="statusClassBorder :service-item-time-ago"}}>
         {{{diff_clean}}}
     </div>
 
-{{#if isSoft}}
-{{#if isCritical}}
-<!--
-    <div class="timer-critical">
-		<div class="cover circle cover-60s"></div>
-		<div class="color-left color-critical circle cover-60s"></div>
-		<div class="color-right color-critical circle"></div>
-	</div>
-	-->
-{{else}}
-<!--
-    <div class="timer-warning">
-		<div class="cover circle cover-60s"></div>
-		<div class="color-left color-warning circle cover-60s"></div>
-		<div class="color-right color-warning circle"></div>
-	</div>
-	-->
-{{/if}}
-{{/if}}
-
-
-	
 
 	<div class="service-item-details">
 	
 {{#if acknowledged}}
-		<div class="acked">Acked by <strong>{{comments_with_info_1}}</strong>
-				"<strong>{{comments_with_info_2}}</strong>"</div>
+		<div class="acked">
+			Acked by <strong>{{comments_with_info_1}}</strong> "<strong>{{comments_with_info_2}}</strong>"
+		</div>
 {{/if}}
-		<div><span {{bind-attr class="statusClassText :service-item-state-text"}}>{{service_description}}</span> on {{host_name}}
-{{#if hostNameAndHostAddressDifferent}}
-		 ({{host_address}})
-{{/if}}
+		<div>
+			<span {{bind-attr class="statusClassText :service-item-state-text"}}>{{service_description}}</span> on {{host_name}} {{#if hostNameAndHostAddressDifferent}}({{host_address}}){{/if}}
 		</div>
 				
 		<span {{bind-attr class="statusClassText :service-item-state-text"}}>
