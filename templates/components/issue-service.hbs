@@ -5,7 +5,7 @@
 
 
     <div {{bind-attr  class="statusClassBorder :service-item-time-ago"}}>
-    	{{#unless isSoft}}<span class="soft-alarm-text">Soft Alarm</span> -{{/unless}}
+    	{{#if isSoft}}<span class="soft-alarm-text">Soft Alarm</span> -{{/if}}
 
         {{{diff_clean}}}
     </div>
