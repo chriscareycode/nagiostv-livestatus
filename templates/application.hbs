@@ -27,31 +27,63 @@
 	{{/if}}
 
 	{{#each foo in content}}
-		{{issue-service
-			next_check=foo.next_check
-			last_check=foo.last_check
-			last_state_change=foo.last_state_change
-			acknowledged=foo.acknowledged
-			animate=foo.animate
-			host_name=foo.host_name
-			host_address=foo.host_address
-			display_name=foo.display_name
-			description=foo.description
-			service_description=foo.description
-			comments_with_info_1=foo.comments_with_info_1
-			comments_with_info_2=foo.comments_with_info_2
-			state_type=foo.state_type
-			service_description=foo.description
-			service_plugin_output_clean=foo.plugin_output
-			service_state=foo.state
-			service_status=foo.state
-			service_status_text=foo.statusClassText
-			service_status_border=foo.statusClassBorder
-			service_state_duration=foo.service_state_duration
-			
-			isCritical=foo.isCritical
-			statusClassText=foo.statusClassText
-		}}
+	{{testHelper "name"}}
+	+{{foo.acknowledged}}+
+		{{#unless foo.acknowledged}}
+			ack
+			{{issue-service
+				next_check=foo.next_check
+				last_check=foo.last_check
+				last_state_change=foo.last_state_change
+				acknowledged=foo.acknowledged
+				animate=foo.animate
+				host_name=foo.host_name
+				host_address=foo.host_address
+				display_name=foo.display_name
+				description=foo.description
+				service_description=foo.description
+				comments_with_info_1=foo.comments_with_info_1
+				comments_with_info_2=foo.comments_with_info_2
+				state_type=foo.state_type
+				service_description=foo.description
+				service_plugin_output_clean=foo.plugin_output
+				service_state=foo.state
+				service_status=foo.state
+				service_status_text=foo.statusClassText
+				service_status_border=foo.statusClassBorder
+				service_state_duration=foo.service_state_duration
+				
+				isCritical=foo.isCritical
+				statusClassText=foo.statusClassText
+			}}
+		{{else}}
+			no
+			{{issue-service
+				next_check=foo.next_check
+				last_check=foo.last_check
+				last_state_change=foo.last_state_change
+				acknowledged=foo.acknowledged
+				animate=foo.animate
+				host_name=foo.host_name
+				host_address=foo.host_address
+				display_name=foo.display_name
+				description=foo.description
+				service_description=foo.description
+				comments_with_info_1=foo.comments_with_info_1
+				comments_with_info_2=foo.comments_with_info_2
+				state_type=foo.state_type
+				service_description=foo.description
+				service_plugin_output_clean=foo.plugin_output
+				service_state=foo.state
+				service_status=foo.state
+				service_status_text=foo.statusClassText
+				service_status_border=foo.statusClassBorder
+				service_state_duration=foo.service_state_duration
+				
+				isCritical=foo.isCritical
+				statusClassText=foo.statusClassText
+			}}
+		{{/unless}}
 	{{/each}}
 
 {{!--
