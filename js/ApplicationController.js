@@ -366,6 +366,8 @@ App.ApplicationController = Ember.ArrayController.extend({
             'acknowledged': food[i].acknowledged,
             'plugin_output': food[i].plugin_output,
 
+            'current_notification_number': food[i].current_notification_number
+
           });
           
           if (food[i].comments_with_info[0]) {
@@ -375,6 +377,7 @@ App.ApplicationController = Ember.ArrayController.extend({
           }
           
           ns.addObject(so);
+          //ns.unshiftObject(so);
 
           // Debug info
           App.info('added a new ServiceObject:');
