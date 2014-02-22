@@ -27,11 +27,15 @@
 	{{/if}}
 
 
+	<div style="margin:5px 0 5px 0px">Filtered Unacked:</div>
+
+	{{#if nagios_services_unacked_empty}}
+		{{allok-service message="All Services are OK"}}
+	{{/if}}
+
+
 	{{#each foo in content}}
-	
-	+{{foo.acknowledged}}+not acked
-		{{#unless foo.acknowledged}}
-			
+		{{#unless foo.acknowledged}}	
 			{{issue-service
 				next_check=foo.next_check
 				last_check=foo.last_check
@@ -61,12 +65,14 @@
 		{{/unless}}
 	{{/each}}
 
+	<div style="margin:8px 0 5px 0px">ACKed Services:</div>
+
+	{{#if nagios_services_acked_empty}}
+		{{allok-service message="No ACKed services"}}
+	{{/if}}
 
 	{{#each foo in content}}
-	
-	+{{foo.acknowledged}}+ acked
 		{{#if foo.acknowledged}}
-			
 			{{issue-service
 				next_check=foo.next_check
 				last_check=foo.last_check
