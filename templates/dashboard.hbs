@@ -1,0 +1,14 @@
+dashboard.hbs
+
+{{#if isUpdating}}<div>Updating</div>{{/if}}
+
+<button {{action "refresh"}}>refresh</button>
+{{#each service in content}}
+	{{service-issue service=service}}
+{{/each}}
+
+<div>
+
+{{outlet}}
+
+</div>

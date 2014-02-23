@@ -1,5 +1,8 @@
 
 
+{{#link-to "index"}}index{{/link-to}}
+{{#link-to "dashboard"}}dashboard{{/link-to}}
+
 <div class="titlearea">
     {{title}}
     <div class="fontsize-medium">
@@ -15,6 +18,11 @@
 	</div>
 
 	<a href="http://chriscarey.com/code/flynncss/" target="_blank"><div {{bind-attr class=":flynn flynnMode"}}></div></a>
+</div>
+
+<div>
+<h5>Outlet Area</h5>
+{{outlet}}
 </div>
 
 <div style="margin:15px 15px 10px 10px">
