@@ -1,15 +1,14 @@
 
 
-<div {{bind-attr  class="statusClassBorder :service-item isSoft:isSoft :animated :bounceInRight"}}>
+<div {{bind-attr  class="service.stateClassBorder :service-item service.isSoft:isSoft :animated :bounceInRight"}}>
 	
-	<div {{bind-attr class="isSoft:isSoft"}}>
+	<div {{bind-attr class="service.isSoft:isSoft"}}>
 
-id: {{service.id}}
 
-    <div {{bind-attr  class="statusClassBorder :service-item-time-ago"}}>
-    	{{#if isSoft}}<span class="soft-alarm-text">Soft Alarm</span> -{{/if}}
+    <div {{bind-attr  class="service.stateClassBorder :service-item-time-ago"}}>
+    	{{#if service.isSoft}}<span class="soft-alarm-text">Soft Alarm</span> -{{/if}}
 
-        {{{diff_clean}}}
+        {{{service.diff_clean}}}
     </div>
 
 
@@ -21,18 +20,18 @@ id: {{service.id}}
 		</div>
 {{/if}}
 		<div>
-			<span {{bind-attr class="statusClassText :service-item-state-text"}}>{{service.description}}</span> on {{service.host_name}} {{#if hostNameAndHostAddressDifferent}}({{service.host_address}}){{/if}}
+			<span {{bind-attr class="service.stateClassText :service-item-state-text"}}>{{service.description}}</span> on {{service.host_name}} {{#if hostNameAndHostAddressDifferent}}({{service.host_address}}){{/if}}
 		</div>
 				
-		<span {{bind-attr class="statusClassText :service-item-state-text"}}>
-			{{service.state_type}}{{service.state_type_text}} {{service.state}} {{stateText}} - {{service.plugin_output}} for {{{diff_clean}}}
+		<span {{bind-attr class="service.stateClassText :service-item-state-text"}}>
+			{{service.state_type_text}} {{stateText}} - {{service.plugin_output}}
 		</span>
 		
 
 
 		<div class="date-details">
-			Last Check: {{service.last_check}} {{last_check_clean}}<br>
-			Next Check: {{service.next_check}} {{next_check_clean}}
+			Last Check: {{service.last_check_clean}}<br>
+			Next Check: {{service.next_check_clean}}
             
             
     	</div>

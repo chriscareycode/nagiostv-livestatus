@@ -1,6 +1,6 @@
 App.ServiceIssueComponent = Ember.Component.extend({
 	
-	display: 'displayNone',
+	display: '',
 	animate: '',
 	
 	classNameBindings: ['display', 'animate'],
@@ -8,58 +8,60 @@ App.ServiceIssueComponent = Ember.Component.extend({
 	didInsertElement: function() {
 
 		console.info('App.ServiceIssueComponent didInsertElement()')
-		
-		this.$().slideDown('fast');
+
+		//this.$().slideDown('fast');
 		
 		this.set('dom_id', this.$().attr('id'));
 	},
 
 	willDestroyElement: function() {
 		console.info('App.ServiceIssueComponent willDestroyElement()');
+		console.dir(this.$());
+		//this.$().slideUp('slow');
 		this.$().addClass('animated');
 		this.$().addClass('fadeOutLeft');
-	},
-	
+	}
+	/*
 	hostNameAndHostAddressDifferent: function() {
 
-		if (this.get('host_name') !== this.get('host_address')) {
+		if (this.get('service.host_name') !== this.get('service.host_address')) {
 			return true;
 		} else {
 			return false;
 		}
-	}.property('host_name','host_address'),
+	}.property('service.host_name','service.host_address'),
 
 	my_custom_id: function() {
 		//console.info('my_custom_id');
 		//console.info(this);
 		//console.info(this.get('host_name'));
-		var temp = this.get('host_name')+'_'+this.get('display_name');
+		var temp = this.get('service.host_name')+'_'+this.get('service.display_name');
 		temp = temp.replace(/ /g,"_");
 		temp = temp.replace(/\./g,"_");
 		temp = temp.replace(/:/g,"_");
 		//var temp2 = temp.replace(/ /g,"_");
 		return temp;
-	}.property('host_name', 'display_name', 'App.last_command_check'),
+	}.property('service.host_name', 'service.display_name', 'App.last_command_check'),
 	
 	last_check_clean: function() {
-		var date = new Date(this.get('last_check') * 1000);
+		var date = new Date(this.get('service.last_check') * 1000);
 		return date;
-	}.property('last_check'),
+	}.property('service.last_check'),
 	
 	next_check_clean: function() {
-		var date = new Date(this.get('next_check') * 1000);
+		var date = new Date(this.get('service.next_check') * 1000);
 		return date;
-	}.property('next_check'),
+	}.property('service.next_check'),
 	
 	last_state_change_clean: function() {
-		var date = new Date(this.get('last_state_change') * 1000);
+		var date = new Date(this.get('service.last_state_change') * 1000);
 		return date;
-	}.property('last_state_change'),
+	}.property('service.last_state_change'),
 	
 	diff_clean: function() {
 
-		var lsc = this.get('last_state_change');
-		var lcc = App.get('last_command_check');
+		var lsc = this.get('service.last_state_change');
+		var lcc = App.get('service.last_command_check');
 		var seconds_ago = lcc-lsc;
 		
 		var days = parseInt( seconds_ago / 86400 ) % 365;
@@ -73,11 +75,11 @@ App.ServiceIssueComponent = Ember.Component.extend({
 
 		return result;
 		
-	}.property('last_state_change', 'App.last_command_check'),
+	}.property('service.last_state_change', 'App.last_command_check'),
 	
 	statusClassBorder: function() {
 		var cc = "";
-		switch(this.get('service_status')) {
+		switch(this.get('service.status')) {
 			case 1:
 				cc = "service-warning-border";
 				break;
@@ -91,12 +93,12 @@ App.ServiceIssueComponent = Ember.Component.extend({
 				cc = "";
 		}
 		return cc;
-	}.property('service_status'),
+	}.property('service.status'),
 	
 	// this is in use
 	stateText: function() {
 		var cc = "";
-		switch(this.get('service_status')) {
+		switch(this.get('service.status')) {
 			case 1:
 				cc = "WARNING";
 				break;
@@ -110,12 +112,12 @@ App.ServiceIssueComponent = Ember.Component.extend({
 				cc = "";
 		}
 		return cc;
-	}.property('service_status'),
+	}.property('service.status'),
 	
 	// this is in use
 	state_type_text: function() {
 		var cc = "";
-		switch(this.get('state_type')) {
+		switch(this.get('service.state_type')) {
 			case 0:
 				cc = "SOFT";
 				break;
@@ -126,17 +128,18 @@ App.ServiceIssueComponent = Ember.Component.extend({
 				cc = "UNKNOWN";
 		}
 		return cc;
-	}.property('state_type'),
+	}.property('service.state_type'),
 	
 	// this is in use
 	isSoft: function() {
 		var soft = false;
-		if (this.get('state_type') === 0) soft = true;
+		if (this.get('service.state_type') === 0) soft = true;
 		return soft;
-	}.property('state_type'),
+	}.property('service.state_type'),
 
 	isCritical: function() {
-		return (this.get('state') === 2);
-	}.property('state')
+		return (this.get('service.state') === 2);
+	}.property('service.state')
+	*/
 	
 });
