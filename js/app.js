@@ -10,69 +10,56 @@
 		LOG_TRANSITIONS: true
 	});
 	
-    App.refreshServices = 15;
-    App.refreshHosts = 15;
-    App.refreshLcc = 10;
-    App.refreshStatus = 300;
-    
-    App.debug = false;
+	App.refreshServices = 15;
+	App.refreshHosts = 15;
+	App.refreshLcc = 10;
+	App.refreshStatus = 300;
+	
+	App.debug = false;
 
-    App.info = function(data){
-    	if (App.debug && console && console.info) console.info(data);
-    };
-    App.log = function(data){
-    	if (App.debug && console && console.log) console.log(data);
-    };
-    App.dir = function(data){
-    	if (App.debug && console && console.dir) console.dir(data);
-    };
+	App.info = function(data){
+		if (App.debug && console && console.info) console.info(data);
+	};
+	App.log = function(data){
+		if (App.debug && console && console.log) console.log(data);
+	};
+	App.dir = function(data){
+		if (App.debug && console && console.dir) console.dir(data);
+	};
 
 	App.loadHandlebar = function(hsbFile, name) {
-        $.ajax({
-            type: "GET",
-            url: hsbFile,
-            success: function(data) {
-                Ember.TEMPLATES[name] = Ember.Handlebars.compile(data);
-            },
-            async:false,
-            cache:false
-        });
-    };
-    // Dynamically load Templates
-    App.loadHandlebar('templates/application.hbs', 'application');
-    //App.loadHandlebar('templates/services.hbs', 'services');
-    //App.loadHandlebar('templates/service_problem.hbs', 'service_problem');
-    
-    // Dynamically load Components
-    App.loadHandlebar('templates/components/allok-service.hbs', 'components/allok-service');
+		$.ajax({
+			type: "GET",
+			url: hsbFile,
+			success: function(data) {
+				Ember.TEMPLATES[name] = Ember.Handlebars.compile(data);
+			},
+			async:false,
+			cache:false
+		});
+	};
+	// Dynamically load Templates
+	App.loadHandlebar('templates/index.hbs', 'index');
+	App.loadHandlebar('templates/application.hbs', 'application');
+	App.loadHandlebar('templates/dashboard/index.hbs', 'dashboard/index');
+	App.loadHandlebar('templates/dashboard.hbs', 'dashboard');
+	
+	// Dynamically load Components
+	App.loadHandlebar('templates/components/allok-service.hbs', 'components/allok-service');
 	App.loadHandlebar('templates/components/issue-service.hbs', 'components/issue-service');
-	//App.loadHandlebar('templates/components/issue-serviceold.hbs', 'components/issue-serviceold');
+	App.loadHandlebar('templates/components/service-issue.hbs', 'components/service-issue'); //Ember Data
 	
 	// EmberJS Routing
 	App.Router.map(function() {
-	  this.route("index", { path: "/" });
+		this.route("index", { path: "/" });
+		this.resource("dashboard", { path: "/dashboard" }, function() {
+			this.route("index", { path: "/" });
+		});
 	});
-	
-	// Application Route
-	
-	App.ApplicationRoute = Ember.Route.extend({
 
-		activate: function() {
-			//document.title = 'Pertino - People';
-		},
-		deactivate: function() {
-			
-		},
-		beforeModel: function() {
-			
-		},
-		model: function(params) {
-			return {};
-		},
-		setupController: function (controller) {
-			controller.startIt();
-		}
-	});
+	
+	
+	
 	
 	
 	
@@ -103,20 +90,7 @@
 		
 	});
 	
-	// this is implied if we arent using them
-	/*
-	App.ApplicationView = Ember.View.extend({
-		templateName:'application',
-
-		didInsertElement: function(){
 	
-			console.info('App.ApplicationView didInsertElement()');
-			//var that = this;
-			//console.dir(this.get('controller'));
-		}
-
-	});
-	*/
 	
 	
 	
