@@ -27,6 +27,9 @@ App.DashboardIndexRoute = Ember.Route.extend({
 
 App.DashboardController = Ember.ObjectController.extend({
 	
+	sortProperties:['last_state_change'],
+	sortAscending: true,
+
 	actions:{
 		refresh: function(){
 			this.doRefresh();

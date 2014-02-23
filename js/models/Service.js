@@ -1,28 +1,21 @@
 App.Service = DS.Model.extend({
 	
-	name: DS.attr(),
-	
-	next_check: DS.attr(),
-	last_check: DS.attr(),
-	last_state_change: DS.attr(),
+	state: DS.attr(),
+	state_type: DS.attr(),
+	plugin_output: DS.attr(),
 	acknowledged: DS.attr(),
-	animate: DS.attr(),
+
 	host_name: DS.attr(),
 	host_address: DS.attr(),
 	display_name: DS.attr(),
 	description: DS.attr(),
+
+	next_check: DS.attr(),
+	last_check: DS.attr(),
+	last_state_change: DS.attr('number'),
 	
 	comments_with_info: DS.attr(),
-	//comments_with_info_1: DS.attr(),
-	//comments_with_info_2: DS.attr(),
-	state_type: DS.attr(),
-	plugin_output: DS.attr(),
-	state: DS.attr(),
-	status: DS.attr(),
-	status_text: DS.attr(),
-	status_border: DS.attr(),
-	state_duration: DS.attr(),
-
+	
 	comments_with_info_1: function() {
 		return this.get('comments_with_info')[0][1];
 	}.property('comments_with_info'),
