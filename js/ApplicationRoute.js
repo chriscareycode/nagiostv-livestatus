@@ -9,7 +9,7 @@ App.ApplicationRoute = Ember.Route.extend({
 		
 	},
 	beforeModel: function() {
-		
+		this.transitionTo('dashboard.index');
 	},
 	model: function(params) {
 		return {};
@@ -17,4 +17,5 @@ App.ApplicationRoute = Ember.Route.extend({
 	setupController: function (controller) {
 		controller.startIt();
 	}
+
 });
