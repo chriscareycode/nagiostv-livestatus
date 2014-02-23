@@ -110,7 +110,7 @@ DS.RESTAdapter.reopen({
 	//namespace: '~chris/nagiostv-livestatus/php-api/livestatus.php?q='
 	//namespace: 'debian7/livestatus.php?q='
 
-	namespace: 'php-api/livestatus.php?a=1&q='
+	namespace: '/nagiostv-livestatus/php-api/livestatus.php?a=1&q='
 
 	// for my debugging..
 	//host: 'http://debian7',
