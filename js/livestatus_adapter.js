@@ -110,10 +110,12 @@ DS.RESTAdapter.reopen({
 	//namespace: '~chris/nagiostv-livestatus/php-api/livestatus.php?q='
 	//namespace: 'debian7/livestatus.php?q='
 
+	// for release
 	namespace: 'nagiostv-livestatus/php-api/livestatus.php?a=1&q='
 
 	// for my debugging..
 	//host: 'http://debian7',
+	//host: 'http://nagios1.infra.pertino.com',
 	//namespace: 'nagiostv-livestatus/php-api/livestatus.php?a=1&q='
 });
 

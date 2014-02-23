@@ -11,6 +11,11 @@ h1 {
 	font-size:1.1em;
 	font-weight:normal;
 }
+h4 {
+	margin-top:4px;
+	margin-bottom:4px;
+}
+
 pre {
 	margin:0px 0px 0px 0px;
 	font-family:sans-serif;

@@ -23,7 +23,7 @@ App.ApplicationController = Ember.ArrayController.extend({
 		init: function(){
 
 			this._super();
-			this.startIt();
+			//this.startIt();
 		},
 
 		actions:{
@@ -435,7 +435,7 @@ App.ApplicationController = Ember.ArrayController.extend({
 	var that = this;
 
 	this.getNagiosStatusFromMK();
-	
+
 	var st1 = setInterval(function(){
 		that.getNagiosStatusFromMK();
 	}, App.refreshStatus*1000);
@@ -452,13 +452,14 @@ App.ApplicationController = Ember.ArrayController.extend({
 
 
 	// start timer for service updates
+	/*
 	this.getServicesFromMK();
 
 	var st3 = setInterval(function(){
 		that.getServicesFromMK();
 	}, App.refreshServices*1000);
 	this.set('interval_get_nagios_services', st3);
-
+	*/
 
 	}
 	

@@ -12,8 +12,9 @@ App.Service = DS.Model.extend({
 	display_name: DS.attr(),
 	description: DS.attr(),
 	
-	comments_with_info_1: DS.attr(),
-	comments_with_info_2: DS.attr(),
+	comments_with_info: DS.attr(),
+	//comments_with_info_1: DS.attr(),
+	//comments_with_info_2: DS.attr(),
 	state_type: DS.attr(),
 	plugin_output: DS.attr(),
 	state: DS.attr(),
@@ -22,7 +23,13 @@ App.Service = DS.Model.extend({
 	status_border: DS.attr(),
 	state_duration: DS.attr(),
 
+	comments_with_info_1: function() {
+		return this.get('comments_with_info')[0][1];
+	}.property('comments_with_info'),
 
+	comments_with_info_2: function() {
+		return this.get('comments_with_info')[0][2];
+	}.property('comments_with_info'),
 
 	hostNameAndHostAddressDifferent: function() {
 

@@ -1,14 +1,31 @@
-dashboard.hbs
+<h4>Services</h4>
 
-{{#if isUpdating}}<div>Updating</div>{{/if}}
+{{#if nagios_services_empty}}
+	{{allok-service message="All Services are OK"}}
+{{/if}}
 
-<button {{action "refresh"}}>refresh</button>
+{{#if nagios_services_unacked_empty}}
+	{{allok-service message="All Services are OK"}}
+{{/if}}
+
 {{#each service in content}}
-	{{service-issue service=service}}
+	{{#unless service.acknowledged}}
+		{{service-issue service=service}}
+	{{/unless}}
+{{/each}}
+
+<h4>ACKed</h4>
+
+{{#if nagios_services_acked_empty}}
+	{{allok-service message="No ACKed services"}}
+{{/if}}
+
+{{#each service in content}}
+	{{#if service.acknowledged}}
+		{{service-issue service=service}}
+	{{/if}}
 {{/each}}
 
 <div>
-
 {{outlet}}
-
 </div>
