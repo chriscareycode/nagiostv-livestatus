@@ -1,4 +1,4 @@
-nagiostv-livestatus
+NagiosTV (livestatus for Nagios 3 edition)
 ===================
 
 ```diff
