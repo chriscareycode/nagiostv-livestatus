@@ -1,6 +1,12 @@
 nagiostv-livestatus
 ===================
 
+```diff
+- There is a new project for NagiosTV which is now getting updates.
+- If you are running Nagios 4.0.7 or newer, I suggest you check out
+- the NagiosTV project over at https://github.com/chriscareycode/nagiostv-react
+```
+
 NagiosTV MK Livestatus Edition
 
 ![Display](http://chriscarey.com/projects/nagiostv/images/nagiostv-livestatus-1.png)
